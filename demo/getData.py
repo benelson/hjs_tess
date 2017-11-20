@@ -336,17 +336,5 @@ def create_Stan_input_mixture_sigmas_alltransit(dic):
 #            'Mstari': Mpli,'Mstar_sigmai': Mstar_sigmai }     
 
 
-def stan_output_to_posterior_samples_1comp(dic):
-    return np.array([ dic['gamma'], dic['xl'], dic['xu'] ]).T
-
-def stan_output_to_posterior_samples_2comp_1xl(dic):
-    return np.array([ dic['theta'].T[0], dic['theta'].T[1], dic['gamma'].T[0], dic['gamma'].T[1], dic['xl'], dic['xu'] ]).T
-
-def stan_output_to_posterior_samples_2comp_2xl(dic):
-    return np.array([ dic['theta'].T[0], dic['theta'].T[1], dic['gamma'].T[0], dic['gamma'].T[1], dic['xl'], dic['xt'], dic['xu'] ]).T
-
-def stan_output_to_posterior_samples_2comp_overlap(dic):
-    return np.array([ dic['theta'].T[0], dic['theta'].T[1], dic['gamma'].T[0], dic['gamma'].T[1], dic['xu'] ]).T
-
 def stan_output_to_posterior_samples_2comp_2xl_overlap(dic):
     return np.array([ dic['theta'].T[0], dic['theta'].T[1], dic['gamma'].T[0], dic['gamma'].T[1], dic['xl'].T[0], dic['xl'].T[1], dic['xu'] ]).T

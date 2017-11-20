@@ -1,1 +1,1 @@
-# Hot Jupiter Foramtion in the TESS era
+# Hot Jupiter Formation in the TESS era
