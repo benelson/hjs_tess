@@ -3,8 +3,8 @@ import numpy as np
 def ICs_2comp_2xl_overlap(IC, xlist, nChains):
     K = len(IC[0])
     theta = [ IC[0] for i in range(nChains) ]
-    gamma = [ IC[1] + np.random.randn(2)*0.01 for i in range(nChains) ]
-    xl = [ IC[2] + np.random.randn(2)*0.01 for i in range(nChains) ]
+    gamma = [ IC[1] + np.random.randn(K)*0.01 for i in range(nChains) ]
+    xl = [ IC[2] + np.random.randn(K)*0.01 for i in range(nChains) ]
     xu = [ IC[3] for i in range(nChains) ]
 
     ICs = []
@@ -15,8 +15,8 @@ def ICs_2comp_2xl_overlap(IC, xlist, nChains):
 def ICs_2comp_2xl_overlap_sigmas(IC, data, nChains):
     K = len(IC[0])
     theta = [ IC[0] for i in range(nChains) ]
-    gamma = [ IC[1] + np.random.randn(2)*0.01 for i in range(nChains) ]
-    xl = [ IC[2] + np.random.randn(2)*0.01 for i in range(nChains) ]
+    gamma = [ IC[1] + np.random.randn(K)*0.01 for i in range(nChains) ]
+    xl = [ IC[2] + np.random.randn(K)*0.01 for i in range(nChains) ]
     xu = [ IC[3]*1.05 for i in range(nChains) ]
 
     per = data["per"]
@@ -53,8 +53,8 @@ def ICs_2comp_2xl_overlap_alltransit(IC, nChains):
 def ICs_2comp_2xl_overlap_sigmas_alltransit(IC, data, nChains):
     K = len(IC[0])
     theta = [ IC[0] for i in range(nChains) ]
-    gamma = [ IC[1] + np.random.randn(2)*0.01 for i in range(nChains) ]
-    xl = [ IC[2] + np.random.randn(2)*0.01 for i in range(nChains) ]
+    gamma = [ IC[1] + np.random.randn(K)*0.01 for i in range(nChains) ]
+    xl = [ IC[2] + np.random.randn(K)*0.01 for i in range(nChains) ]
     xu = [ IC[3]*1.05 for i in range(nChains) ]
 
     peri = data["peri"]

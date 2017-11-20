@@ -3,14 +3,15 @@ import generate
 import getData
 import pystan
 import sys
+import stan_utility_copy as stan_utility
 
-arg = sys.argv[1]
+#arg = sys.argv[1]
 filename = "planets_WASP.csv"
 modelfile = "powerlaw_2comp_2xl_overlap_sigmas_alltransit.stan"
-nChains = 1
-nIterations = 600000
-nThin = 600
-nJobs = 1
+nChains = 2
+nIterations = 10000
+nThin = 1
+nJobs = -1
 
 data = getData.NEA_to_dict(filename)
 Stan_data = getData.create_Stan_input_mixture_sigmas_alltransit(data)
@@ -21,7 +22,13 @@ fit = pystan.stan(file=modelfile, data=Stan_data, iter=nIterations, chains=nChai
 
 postSamp = getData.stan_output_to_posterior_samples_2comp_2xl_overlap(fit.extract())
 
-with open("postSamp_WASP_2comp_2xl_overlap_sigmas." + arg + ".txt", "w") as f:
+with open("postSamp_WASP_2comp_2xl_overlap_sigmas.txt", "w") as f:
+#with open("postSamp_WASP_2comp_2xl_overlap_sigmas." + arg + ".txt", "w") as f:
     writer = csv.writer(f, delimiter=' ')
     for item in postSamp:
         writer.writerow(list(item))
+
+
+stan_utility.check_treedepth(fit)
+stan_utility.check_energy(fit)
+stan_utility.check_div(fit)
